@@ -21,11 +21,11 @@ router.post("/", (req, res) => {
           res.status(200).json(role);
         })
         .catch(err => {
-          res.status(500).json(err);
+          res.status(500).json(err.message);
         });
     })
     .catch(err => {
-      res.status(500).json(err);
+      res.status(500).json(err.message);
     });
 });
 

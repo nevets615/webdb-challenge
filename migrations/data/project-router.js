@@ -11,21 +11,21 @@ const knexConfig = {
 const db = knex(knexConfig);
 
 router.post("/", (req, res) => {
-  db("students")
+  db("projects")
     .insert(req.body, "id")
     .then(ids => {
-      db("students")
+      db("projects")
         .where({ id: ids[0] })
         .first()
         .then(role => {
           res.status(200).json(role);
         })
         .catch(err => {
-          res.status(500).json(err);
+          res.status(500).json(err.message);
         });
     })
     .catch(err => {
-      res.status(500).json(err);
+      res.status(500).json(err.message);
     });
 });
 
