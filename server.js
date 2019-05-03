@@ -1,14 +1,14 @@
 const express = require("express");
 
-const cohortRouter = require("./cohort/cohort-router.js");
-const studentRouter = require("./cohort/student-router.js");
+const projectRouter = require("./migrations/data/project-router.js");
+const actionRouter = require("./migrations/data/action-router.js");
 
 const server = express();
 
 server.use(express.json());
 
-server.use("/api/cohort", cohortRouter);
+server.use("/api/project", projectRouter);
 
-server.use("/api/students", studentRouter);
+server.use("/api/action", actionRouter);
 
 module.exports = server;
