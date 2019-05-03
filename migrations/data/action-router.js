@@ -35,13 +35,13 @@ router.get("/projects/:id", (req, res) => {
   db("projects")
     .where("id", id)
     .then(proj => {
-      project[0] = proj[0];
+      project.push(proj[0]);
     })
     .then(
       db("actions")
-        .where("proj_id", id)
-        .then(action => {
-          project[0].actions = action;
+        .where("project_id", id)
+        .then(actions => {
+          project[0].actions = actions;
         })
         .then(() => {
           res.json(project);
